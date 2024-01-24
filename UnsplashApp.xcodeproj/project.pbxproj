@@ -16,6 +16,11 @@
 		26021ADE2B600CA8000C9358 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26021ADD2B600CA8000C9358 /* environment.plist */; };
 		26021AE02B601605000C9358 /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26021ADF2B601605000C9358 /* UnsplashAPI.swift */; };
 		26021AE22B601978000C9358 /* FeedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26021AE12B601978000C9358 /* FeedState.swift */; };
+		26C6AAE32B60F82C00CAFBCB /* UnsplashTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6AAE22B60F82C00CAFBCB /* UnsplashTopic.swift */; };
+		26C6AAE52B61066700CAFBCB /* TopicDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6AAE42B61066700CAFBCB /* TopicDetailsView.swift */; };
+		26C6AAE72B6110D500CAFBCB /* GridPhotoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6AAE62B6110D500CAFBCB /* GridPhotoComponent.swift */; };
+		26C6AAE92B6119F200CAFBCB /* DetailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6AAE82B6119F200CAFBCB /* DetailImage.swift */; };
+		26C6AAEB2B61428D00CAFBCB /* DetailAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6AAEA2B61428D00CAFBCB /* DetailAuthor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,11 @@
 		26021ADD2B600CA8000C9358 /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		26021ADF2B601605000C9358 /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
 		26021AE12B601978000C9358 /* FeedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedState.swift; sourceTree = "<group>"; };
+		26C6AAE22B60F82C00CAFBCB /* UnsplashTopic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashTopic.swift; sourceTree = "<group>"; };
+		26C6AAE42B61066700CAFBCB /* TopicDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicDetailsView.swift; sourceTree = "<group>"; };
+		26C6AAE62B6110D500CAFBCB /* GridPhotoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPhotoComponent.swift; sourceTree = "<group>"; };
+		26C6AAE82B6119F200CAFBCB /* DetailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImage.swift; sourceTree = "<group>"; };
+		26C6AAEA2B61428D00CAFBCB /* DetailAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAuthor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,14 +72,19 @@
 			isa = PBXGroup;
 			children = (
 				26021AD52B5FEE71000C9358 /* UnsplashApp.swift */,
+				26C6AAE62B6110D500CAFBCB /* GridPhotoComponent.swift */,
 				26021ADF2B601605000C9358 /* UnsplashAPI.swift */,
 				26021AE12B601978000C9358 /* FeedState.swift */,
+				26C6AAEA2B61428D00CAFBCB /* DetailAuthor.swift */,
+				26C6AAE42B61066700CAFBCB /* TopicDetailsView.swift */,
+				26C6AAE82B6119F200CAFBCB /* DetailImage.swift */,
 				26021AC92B5FECB2000C9358 /* ContentView.swift */,
 				26021ACB2B5FECB4000C9358 /* Assets.xcassets */,
 				26021ACD2B5FECB4000C9358 /* Preview Content */,
 				26021AD72B60028B000C9358 /* UnsplashModel.swift */,
 				26021ADB2B600C63000C9358 /* PListManager.swift */,
 				26021ADD2B600CA8000C9358 /* environment.plist */,
+				26C6AAE22B60F82C00CAFBCB /* UnsplashTopic.swift */,
 			);
 			path = UnsplashApp;
 			sourceTree = "<group>";
@@ -153,9 +168,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C6AAE92B6119F200CAFBCB /* DetailImage.swift in Sources */,
 				26021ADC2B600C63000C9358 /* PListManager.swift in Sources */,
+				26C6AAE72B6110D500CAFBCB /* GridPhotoComponent.swift in Sources */,
+				26C6AAEB2B61428D00CAFBCB /* DetailAuthor.swift in Sources */,
+				26C6AAE52B61066700CAFBCB /* TopicDetailsView.swift in Sources */,
 				26021AE02B601605000C9358 /* UnsplashAPI.swift in Sources */,
 				26021AD62B5FEE71000C9358 /* UnsplashApp.swift in Sources */,
+				26C6AAE32B60F82C00CAFBCB /* UnsplashTopic.swift in Sources */,
 				26021AE22B601978000C9358 /* FeedState.swift in Sources */,
 				26021ACA2B5FECB2000C9358 /* ContentView.swift in Sources */,
 				26021AD82B60028B000C9358 /* UnsplashModel.swift in Sources */,
@@ -294,6 +314,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UnsplashApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = qs;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = qosihdf;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -322,6 +344,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"UnsplashApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = qs;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = qosihdf;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

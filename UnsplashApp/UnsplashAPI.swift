@@ -7,12 +7,12 @@
 
 import Foundation
 
-func unsplashApiBaseUrl() -> URLComponents {
+func unsplashApiBaseUrl(path: String) -> URLComponents {
     var urlComponents = URLComponents()
     
     urlComponents.scheme = "https"
     urlComponents.host = "api.unsplash.com"
-    urlComponents.path = "/photos"
+    urlComponents.path = path
     
     let clientId = ConfigurationManager.instance.plistDictionnary.clientId
     let clientIDQueryItem = URLQueryItem(name: "client_id", value: clientId)
@@ -21,8 +21,8 @@ func unsplashApiBaseUrl() -> URLComponents {
     return urlComponents
 }
 
-func feedUrl(orderBy: String = "popular", perPage: Int = 10) -> URL? {
-    var urlComponents = unsplashApiBaseUrl()
+func feedUrl(path: String, orderBy: String = "popular", perPage: Int = 10) -> URL? {
+    var urlComponents = unsplashApiBaseUrl(path: path)
     
     let orderByQueryItem = URLQueryItem(name: "order_by", value: orderBy)
     let perPageQueryItem = URLQueryItem(name: "per_page", value: String(perPage))

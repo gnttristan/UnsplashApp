@@ -9,43 +9,67 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var feedState = FeedState()
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+    let rowTopics: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     func loadData() async {
-        await feedState.fetchHomeFeed()
+        await feedState.loadFeedPhotos()
     }
     
     var body: some View {
         NavigationStack() {
-            Text("Feed")
-        }
-        .frame(height: 30)
-        .font(.largeTitle)
-        VStack {
-            Button(action: {
-                Task {
-                    await loadData()
-                }
-            }, label: {
-                Text("Load Data")
-            })
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 8) {
-                    ForEach(feedState.homeFeed, id: \.id) { imageUrl in
-                        AsyncImage(url: URL(string: imageUrl.urls.small)) { image in
-                            image
-                                .centerCropped()
-                                .aspectRatio(contentMode: .fill)
-                        } placeholder: {
-                            ProgressView()
+            Section(){
+                VStack {
+                    HStack(spacing: 8) {
+                        if feedState.topicFeed.isEmpty {
+                            ForEach(0..<3, id: \.self) { _ in
+                                Rectangle()
+                                    .foregroundColor(.gray)
+                                    .aspectRatio(contentMode: .fill)
+                                    .cornerRadius(12)
+                                    .shadow(radius: 5)
+                            }
+                        } else {
+                            ForEach(feedState.topicFeed.prefix(3), id: \.id) { topic in
+                                NavigationLink(destination: TopicDetailsView(topic: topic)) {
+                                    VStack() {
+                                        AsyncImage(url: URL(string: topic.coverPhoto.urls.small)) { image in
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                        .frame(height: 60)
+                                        .cornerRadius(12)
+                                        .shadow(radius: 5)
+                                        
+                                        Text(topic.title)
+                                    }
+                                }
+                            }
                         }
-                        .shadow(radius: 5)
                     }
                 }
-                .redacted(reason: feedState.homeFeed.isEmpty ? .placeholder : .init())
             }
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .padding(12)
+            .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+            .onAppear {
+                Task{
+                    await feedState.loadFeedTopics()
+                }
+            }
+            Section() {
+                VStack {
+                    Button(action: {
+                        Task {
+                            await loadData()
+                        }
+                    }, label: {
+                        Text("Load Data")
+                    })
+                }
+                GridPhotoComponent(images: feedState.homeFeed)
+            }
+            .navigationBarTitle("Feed", displayMode: .large)
         }
     }
 }

@@ -1,10 +1,14 @@
 import Foundation
 
-// MARK: - UnsplashModel
-struct UnsplashModel: Codable {
+// MARK: - UnsplashPhoto
+struct UnsplashPhoto: Codable {
     let id, slug: String
     let urls: Urls
     let user: User
+    
+    enum CodingKeys: String, CodingKey {
+        case id, slug, urls, user
+    }
 }
 
 // MARK: - Urls
@@ -12,7 +16,7 @@ struct Urls: Codable {
     let raw, full, regular, small: String
     let thumb, smallS3: String
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey, CaseIterable {
         case raw, full, regular, small, thumb
         case smallS3 = "small_s3"
     }
@@ -22,12 +26,19 @@ struct Urls: Codable {
 struct User: Codable {
     let id: String
     let username, name: String
-
+    let bio, location: String?
+    let profileImage: ProfileImage
 
     enum CodingKeys: String, CodingKey {
         case id
         case username, name
+        case bio, location
+        case profileImage = "profile_image"
     }
+}
+
+struct ProfileImage: Codable {
+    let small, medium, large: String
 }
 
 // MARK: - Encode/decode helpers
